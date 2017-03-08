@@ -1,6 +1,7 @@
 #include <cstdlib>
 #include<iostream>
 using namespace std;
+#include "elapsed_time.h"
 
 class node
 {
@@ -21,18 +22,15 @@ StackusingList(int max)
 
 void push(int element)
 {
-    if(count == maxnum)
-            cout <<"stack is full" << endl;
-    else
-    {
-        node *newTop = new node;
+    node *newTop = new node;
+    if(count == maxnum){
         if(top == NULL)
         {
             newTop->data = element;
             newTop->next = NULL;
             top = newTop;
             count++;
-        }
+}        }
         else
         {
             newTop->data = element;
@@ -41,7 +39,6 @@ void push(int element)
             count++;
         }
     }
-}
 
 void pop()
 {
@@ -63,9 +60,13 @@ private:
 };
 
 int main(int argc, char** argv) {
-    StackusingList *sl = new StackusingList(5);
-    sl->push(6);
-    sl->pop();
+    StackusingList *sl = new StackusingList(1);
+    start_timer();
+    for (int i= 0; i < 1000000; ++i) {
+        sl->push(i);
+}
+    double cycles = elapsed_time();
+    cout << cycles << endl;
 
     return 0;
 }

@@ -1,13 +1,14 @@
 #include <iostream>
 #include <string>
 using namespace std;
+#include "elapsed_time.h"
  
 class Stack {
 private:
       int top;
       int capacity;
       int *storage;
-      int *storage1;
+
 public:
       Stack(int capacity) {
             if (capacity <= 0)
@@ -19,12 +20,13 @@ public:
  
       void push(int value) {
             if (top == capacity){
-                  capacity += 100;
-                  storage1 = new int[capacity];
-                  for (int i= 0; i < capacity-100; ++i) {
-                      storage1[i] = storage[i];
-       }}   
-            
+               int* resize_arr = new int[capacity + 100];
+               for(int i = 0; i < capacity; i++)
+                   resize_arr[i] = storage[i];
+
+               capacity++;
+               storage = resize_arr;
+               delete[] resize_arr;
             top++;
             storage[top] = value;
       }
@@ -43,9 +45,12 @@ public:
 
 int main()
 {
-   Stack elif(1);
-   elif.push(3);
-   elif.push(5);
-   elif.push(3);
+   Stack elif(3);
+   start_timer();
+   for (int i= 0; i < 1000000; ++i) {
+       elif.push(i);
+}
+   double cycles = elapsed_time();
+   cout << cycles << endl;
 
    }

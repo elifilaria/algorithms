@@ -1,7 +1,7 @@
 #include <iostream>
 #include <stack>
 using namespace std;
-
+#include "elapsed_time.h"
 
 int main ()
 
@@ -9,8 +9,11 @@ int main ()
 
     stack <int> cards;
 
-    cards.push(3);
-
-    cards.pop();
+    start_timer();
+    for (int i= 0; i < 1000000; ++i) {
+        cards.push(i);
+}
+    double cycles = elapsed_time();
+    cout << cycles << endl;
 }
 
