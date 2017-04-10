@@ -76,6 +76,8 @@ void decode(Node* top, string binary)
 		}
 		cout << temp->getLetter();
 	}
+	cout << endl;
+
 }
 
 int main()
